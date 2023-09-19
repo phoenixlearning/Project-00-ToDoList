@@ -12,7 +12,7 @@
 $primary-color: #EAEAEA
 $background-color: #FFFFFF
 
-$primary-hover-color: #00FF00
+$primary-hover-color: #005F00
 
 .container-form
 	width: 40rem
@@ -28,7 +28,7 @@ $primary-hover-color: #00FF00
 		.input-box
 			position: relative
 			margin: auto
-		label 
+		label
 			position: absolute
 			top: 15px
 			left: 10px
@@ -49,14 +49,26 @@ $primary-hover-color: #00FF00
 		textarea
 			padding-block: 1rem
 			resize: none
-		.button 
+		.button
 			width: 10rem
 			height: 3rem
 			margin: auto
 			border: none
 			border-radius: 10px
 			transition: 0.2s
-
 			&:hover
 				background-color: $primary-hover-color
+				color: $primary-color
+			&:active
+				translate: 0 5px
 
+.container-card
+	display: flex
+	flex-wrap: wrap
+	justify-content: center
+	gap: 0.5rem
+	.card
+		width: 10rem
+		text-align: center
+		border-radius: 6px
+		background-color: $primary-color

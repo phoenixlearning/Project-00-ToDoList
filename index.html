@@ -4,6 +4,9 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./assets/css/styles.css" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet" />
 		<title>To Do List</title>
 	</head>
 	<body>
@@ -35,14 +38,18 @@
 							id="descripcion"
 							class="input-form"
 							cols="30"
-							rows="10"
+							rows="5"
 							required></textarea>
 						<label for="descripcion">Descripción</label>
 					</div>
-					<input type="submit" value="Ingresar" class="button"/>
+					<button class="button" onclick="addTask(event)">
+						Agregar
+					</button>
 				</form>
 			</section>
-			<section class="container-card"></section>
+			<section class="container-card">
+				
+			</section>
 		</main>
 		<footer></footer>
 		<script src="./assets/js/script.js"></script>
