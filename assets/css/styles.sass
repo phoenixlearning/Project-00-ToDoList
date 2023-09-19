@@ -8,6 +8,12 @@
 	box-sizing: border-box
 	font-family: roboto
 
+/* Variables */
+$primary-color: #EAEAEA
+$background-color: #FFFFFF
+
+$primary-hover-color: #00FF00
+
 .container-form
 	width: 40rem
 	margin: auto
@@ -17,13 +23,40 @@
 		gap: 1rem
 		margin: 2rem
 		padding: 2rem
-		background-color: gray
-		border: red 2px solid
-		input
+		background-color: $primary-color
+		border-radius: 14px
+		.input-box
+			position: relative
+			margin: auto
+		label 
+			position: absolute
+			top: 15px
+			left: 10px
+			background: $background-color
+			border-radius: 4px
+			transition: 0.3s
+			padding-inline: 0.25rem
+		.input-form
 			width: 20rem
-			height: 3rem
+			min-height: 3rem
 			border: none
 			border-radius: 10px
+			padding-inline: 1rem
+			&:focus ~ label, &:valid ~ label
+				font-size: small
+				top: -10px
+				left: 14px
 		textarea
+			padding-block: 1rem
+			resize: none
+		.button 
+			width: 10rem
+			height: 3rem
+			margin: auto
 			border: none
 			border-radius: 10px
+			transition: 0.2s
+
+			&:hover
+				background-color: $primary-hover-color
+

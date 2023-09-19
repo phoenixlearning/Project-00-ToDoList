@@ -8,6 +8,7 @@
   font-family: roboto;
 }
 
+/* Variables */
 .container-form {
   width: 40rem;
   margin: auto;
@@ -18,16 +19,46 @@
   gap: 1rem;
   margin: 2rem;
   padding: 2rem;
-  background-color: gray;
-  border: red 2px solid;
+  background-color: #EAEAEA;
+  border-radius: 14px;
 }
-.container-form form input {
+.container-form form .input-box {
+  position: relative;
+  margin: auto;
+}
+.container-form form label {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  background: #FFFFFF;
+  border-radius: 4px;
+  transition: 0.3s;
+  padding-inline: 0.25rem;
+}
+.container-form form .input-form {
   width: 20rem;
-  height: 3rem;
+  min-height: 3rem;
   border: none;
   border-radius: 10px;
+  padding-inline: 1rem;
+}
+.container-form form .input-form:focus ~ label, .container-form form .input-form:valid ~ label {
+  font-size: small;
+  top: -10px;
+  left: 14px;
 }
 .container-form form textarea {
+  padding-block: 1rem;
+  resize: none;
+}
+.container-form form .button {
+  width: 10rem;
+  height: 3rem;
+  margin: auto;
   border: none;
   border-radius: 10px;
+  transition: 0.2s;
+}
+.container-form form .button:hover {
+  background-color: #00FF00;
 }/*# sourceMappingURL=styles.css.map */
