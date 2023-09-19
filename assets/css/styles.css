@@ -36,7 +36,7 @@
   padding-inline: 0.25rem;
 }
 .container-form form .input-form {
-  max-width: 20rem;
+  width: clamp(3rem, 50vw, 20rem);
   min-height: 3rem;
   border: none;
   border-radius: 10px;
@@ -52,16 +52,17 @@
   resize: none;
 }
 .container-form form .button {
-  width: 10rem;
+  width: clamp(5rem, 50vw, 10rem);
   height: 3rem;
   margin: auto;
   border: none;
   border-radius: 10px;
   transition: 0.2s;
+  background-color: #ffffff;
 }
 .container-form form .button:hover {
   background-color: #005f00;
-  color: #eaeaea;
+  color: #ffffff;
 }
 .container-form form .button:active {
   translate: 0 5px;
@@ -78,4 +79,10 @@
   text-align: center;
   border-radius: 6px;
   background-color: #eaeaea;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }/*# sourceMappingURL=styles.css.map */
