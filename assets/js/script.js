@@ -36,8 +36,8 @@ function deleteTask(e) {
 	setItem(document.querySelector(".container-card").innerHTML);
 }
 
-//* Función para editar. No es una edición, sólo rescata los valores de la tarea para
-//* luego eliminarla. Finalmente agrega una nueva tarea.
+//* Función para editar. No es una edición real, sólo rescata los valores de la tarea para
+//* luego eliminarla. Finalmente hay agregar una nueva tarea.
 function editTask(e) {
 	const tarea = e.target.parentElement.querySelector(".tarea").innerHTML;
 	const codigo = e.target.parentElement.querySelector(".codigo").innerHTML;

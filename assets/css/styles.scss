@@ -71,7 +71,6 @@ $primary-hover-color: #005f00;
 			&:active {
 				translate: 0 5px;
 			}
-			
 		}
 	}
 }
@@ -82,15 +81,12 @@ $primary-hover-color: #005f00;
 	justify-content: center;
 	gap: 0.5rem;
 	.card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
 		width: 10rem;
 		text-align: center;
 		border-radius: 6px;
 		background-color: $primary-color;
 	}
-}
-
-.card {
-	display: flex;
-	flex-direction: column;
-	gap: 0.25rem;
 }
