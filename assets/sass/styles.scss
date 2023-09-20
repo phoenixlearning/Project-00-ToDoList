@@ -1,4 +1,4 @@
-@import "./abstract/mixins";
+@import "./abstracts/mixins";
 @import "./core/reset";
 
 .container-form {
@@ -42,7 +42,7 @@
 			padding-block: 1rem;
 			resize: none;
 		}
-		.button {
+		.addTask{
 			@include button;
 		}
 	}
@@ -63,6 +63,10 @@
 			background-color: $background-color;
 			border-radius: 4px;
 			margin-bottom: 0.5rem;
+		}
+		.bx {
+			margin-inline: 1rem;
+			font-size: x-large;
 		}
 	}
 }

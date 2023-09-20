@@ -5,6 +5,9 @@ let listaTareas = [];
 let id = 0;
 if (tareas) {
 	listaTareas = JSON.parse(tareas);
+	console.log(listaTareas);
+	id = listaTareas[listaTareas.length - 1].id +1;
+	console.log(id);
 	updateList();
 } 
 
@@ -44,6 +47,7 @@ function updateList() {
 					<p class='bx bxs-trash bx-tada-hover' onclick='deleteTask(event)'></p>
 					</div>`;
 	});
+	console.log(listaTareas);
 	setItem(listaTareas);
 }
 
@@ -66,7 +70,7 @@ function editTask(e) {
 	inputs[0].value = nombre;
 	inputs[1].value = codigo;
 	inputs[2].value = descripcion;
-	deleteTask(e);
+
 }
 
 //* Función que limpia el formulario.
