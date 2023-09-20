@@ -1,0 +1,18 @@
+@import "./variables";
+
+@mixin button() {
+	width: clamp(5rem, 50vw, 10rem);
+	height: 3rem;
+	margin: auto;
+	border: none;
+	border-radius: 10px;
+	transition: 0.2s;
+	background-color: $background-color;
+	&:hover {
+		background-color: $primary-hover-color;
+		color: $background-color;
+	}
+	&:active {
+		translate: 0 5px;
+	}
+}

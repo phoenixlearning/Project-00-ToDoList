@@ -1,19 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,900;1,300;1,700&display=swap");
-
-* {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	text-decoration: none;
-	box-sizing: border-box;
-	font-family: roboto;
-}
-
-/* Variables */
-$primary-color: #eaeaea;
-$background-color: #ffffff;
-
-$primary-hover-color: #005f00;
+@import "./abstract/mixins";
+@import "./core/reset";
 
 .container-form {
 	max-width: 40rem;
@@ -57,20 +43,7 @@ $primary-hover-color: #005f00;
 			resize: none;
 		}
 		.button {
-			width: clamp(5rem, 50vw, 10rem);
-			height: 3rem;
-			margin: auto;
-			border: none;
-			border-radius: 10px;
-			transition: 0.2s;
-			background-color: $background-color;
-			&:hover {
-				background-color: $primary-hover-color;
-				color: $background-color;
-			}
-			&:active {
-				translate: 0 5px;
-			}
+			@include button;
 		}
 	}
 }
@@ -81,12 +54,15 @@ $primary-hover-color: #005f00;
 	justify-content: center;
 	gap: 0.5rem;
 	.card {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-		width: 10rem;
+		width: 20rem;
+		padding: 0.5rem 1rem;
 		text-align: center;
 		border-radius: 6px;
 		background-color: $primary-color;
+		.card-content {
+			background-color: $background-color;
+			border-radius: 4px;
+			margin-bottom: 0.5rem;
+		}
 	}
 }
