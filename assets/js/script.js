@@ -1,11 +1,10 @@
-//* Inicialización, verifica la existencia del localStorage para cargar
+//* Inicialización, verifica la existencia del localStorage para cargar. Hay que parsear
+//* al JSON para que vuelva a ser un arreglo de objetos
 const tareas = localStorage.getItem("Tareas");
 let listaTareas = [];
 let id = 0;
 if (tareas) {
-	console.log(tareas);
 	listaTareas = JSON.parse(tareas);
-	console.log(listaTareas);
 	updateList();
 } 
 
@@ -29,6 +28,8 @@ function addTask(e) {
 	cleanInputs(inputs);
 }
 
+//* Función que genera la lista de tareas visible en el HTML. También setea la lista de 
+//* tareas en el localStorage
 function updateList() {
 	const containerCard = document.querySelector(".container-card");
 	containerCard.innerHTML = "";
@@ -43,8 +44,9 @@ function updateList() {
 					<p class='bx bxs-trash bx-tada-hover' onclick='deleteTask(event)'></p>
 					</div>`;
 	});
-	setItem(JSON.stringify(listaTareas))
+	setItem(listaTareas);
 }
+
 //* Función parecida a la vista en clases, solo que no usa listeners. Actualiza el
 //* localStorage cuando hay cambios.
 function deleteTask(e) {
@@ -72,7 +74,8 @@ function cleanInputs(inputs) {
 	inputs.forEach((input) => (input.value = ""));
 }
 
-//* Función que actualiza el localStorage.
+//* Función que actualiza el localStorage. Hay que transformar en un string el arreglo de 
+//* objetos para que se guarde.
 function setItem(tasks) {
-	localStorage.setItem("Tareas", tasks);
+	localStorage.setItem("Tareas", JSON.stringify(tasks));
 }
