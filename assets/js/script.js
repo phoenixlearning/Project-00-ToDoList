@@ -5,15 +5,13 @@ let listaTareas = [];
 let id = 0;
 if (tareas) {
 	listaTareas = JSON.parse(tareas);
-	console.log(listaTareas);
-	id = listaTareas[listaTareas.length - 1].id +1;
-	console.log(id);
+	id = listaTareas[listaTareas.length - 1].id + 1;
 	updateList();
-} 
+}
 
 //* Función vista en clases que agrega una tarea. Además guarda los cambios en el
 //* localStorage con la función setItem. Invoca a cleanInputs para limpiar el formulario
-function addTask(e) {
+function agregarTask(e) {
 	const inputs = document.querySelectorAll(".input-form");
 	const nombre = inputs[0].value.trim();
 	const codigo = inputs[1].value.trim();
@@ -28,10 +26,10 @@ function addTask(e) {
 		listaTareas.push(tarea);
 	}
 	updateList();
-	cleanInputs(inputs);
+	cleanInputs();
 }
 
-//* Función que genera la lista de tareas visible en el HTML. También setea la lista de 
+//* Función que genera la lista de tareas visible en el HTML. También setea la lista de
 //* tareas en el localStorage
 function updateList() {
 	const containerCard = document.querySelector(".container-card");
@@ -47,21 +45,26 @@ function updateList() {
 					<p class='bx bxs-trash bx-tada-hover' onclick='deleteTask(event)'></p>
 					</div>`;
 	});
-	console.log(listaTareas);
 	setItem(listaTareas);
 }
 
 //* Función parecida a la vista en clases, solo que no usa listeners. Actualiza el
 //* localStorage cuando hay cambios.
 function deleteTask(e) {
-	const id = e.target.parentElement.querySelector(".id").getAttribute("value");
-	listaTareas = listaTareas.filter(tarea => tarea.id != id);
+	const id = e.target.parentElement
+		.querySelector(".id")
+		.getAttribute("value");
+	listaTareas = listaTareas.filter((tarea) => tarea.id != id);
 	updateList();
+	cleanInputs();
 }
 
 //* Función para editar. No es una edición real, sólo rescata los valores de la nombre para
 //* luego eliminarla. Finalmente hay agregar una nueva nombre.
 function editTask(e) {
+	const id = e.target.parentElement
+		.querySelector(".id")
+		.getAttribute("value");
 	const nombre = e.target.parentElement.querySelector(".nombre").innerHTML;
 	const codigo = e.target.parentElement.querySelector(".codigo").innerHTML;
 	const descripcion =
@@ -70,15 +73,44 @@ function editTask(e) {
 	inputs[0].value = nombre;
 	inputs[1].value = codigo;
 	inputs[2].value = descripcion;
+	changeButton("editTask", "Editar", `updateTask(event, ${id})`);
+}
 
+function updateTask(e, id) {
+	const inputs = document.querySelectorAll(".input-form");
+	const nombre = inputs[0].value.trim();
+	const codigo = inputs[1].value.trim();
+	const descripcion = inputs[2].value.trim();
+
+	e.preventDefault();
+	if (nombre == "" || codigo == "" || descripcion == "") {
+		alert("Llenar todos los campos");
+	} else {
+		let index = listaTareas.findIndex((tarea) => tarea.id == id);
+		listaTareas[index] = {id, nombre, codigo, descripcion};
+		console.log(index);
+	}
+	updateList();
+	cleanInputs();
+}
+
+function changeButton(id, innerHTML, onclick) {
+	const button = document.querySelector(".buttonTask");
+	button.removeAttribute("id");
+	button.removeAttribute("onclick");
+	button.setAttribute("id", id);
+	button.setAttribute("onclick", onclick);
+	button.innerHTML = innerHTML;
 }
 
 //* Función que limpia el formulario.
-function cleanInputs(inputs) {
+function cleanInputs() {
+	const inputs = document.querySelectorAll(".input-form");
+	changeButton("addTask", "Agregar", "agregarTask(event)");
 	inputs.forEach((input) => (input.value = ""));
 }
 
-//* Función que actualiza el localStorage. Hay que transformar en un string el arreglo de 
+//* Función que actualiza el localStorage. Hay que transformar en un string el arreglo de
 //* objetos para que se guarde.
 function setItem(tasks) {
 	localStorage.setItem("Tareas", JSON.stringify(tasks));

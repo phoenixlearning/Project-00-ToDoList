@@ -42,8 +42,13 @@
 			padding-block: 1rem;
 			resize: none;
 		}
-		.addTask{
+		#addTask {
 			@include button;
+			background-color: $primary-button-color;
+		}
+		#editTask {
+			@include button;
+			background-color: $secondary-button-color;
 		}
 	}
 }

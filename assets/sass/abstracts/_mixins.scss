@@ -3,7 +3,6 @@
 @mixin button() {
 	position: relative;
 	border: none;
-	background-color: $primary-button-color;
 	border-radius: 4em;
 	font-size: 16px;
 	color: $background-color;
@@ -18,7 +17,6 @@
 
 	&:hover {
 		transition-duration: 0.1s;
-		background-color: $primary-button-color;
 		opacity: 0.7;
 	}
 	&:after {
@@ -32,7 +30,7 @@
 		height: 100%;
 		opacity: 0;
 		transition: all 0.5s;
-		box-shadow: 0 0 10px 30px $primary-button-color;
+		box-shadow: 0 0 10px 30px $background-color;
 	}
 	&:active {
 		top: 1px;
