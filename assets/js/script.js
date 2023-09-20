@@ -59,8 +59,8 @@ function deleteTask(e) {
 	cleanInputs();
 }
 
-//* Función para editar. No es una edición real, sólo rescata los valores de la nombre para
-//* luego eliminarla. Finalmente hay agregar una nueva nombre.
+//* Función para editar. Sólo rescata los valores de un card y cambia el botón de
+//* agregar a editar.
 function editTask(e) {
 	const id = e.target.parentElement
 		.querySelector(".id")
@@ -76,6 +76,7 @@ function editTask(e) {
 	changeButton("editTask", "Editar", `updateTask(event, ${id})`);
 }
 
+//* Función guardar la edición. Parecido a agregar pero recibe ademas un id.
 function updateTask(e, id) {
 	const inputs = document.querySelectorAll(".input-form");
 	const nombre = inputs[0].value.trim();
@@ -88,12 +89,12 @@ function updateTask(e, id) {
 	} else {
 		let index = listaTareas.findIndex((tarea) => tarea.id == id);
 		listaTareas[index] = {id, nombre, codigo, descripcion};
-		console.log(index);
 	}
 	updateList();
 	cleanInputs();
 }
 
+//* Función para modificar el botón según los parámetros asignados.
 function changeButton(id, innerHTML, onclick) {
 	const button = document.querySelector(".buttonTask");
 	button.removeAttribute("id");
