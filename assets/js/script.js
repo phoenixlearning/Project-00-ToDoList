@@ -16,12 +16,13 @@ function agregarTask(e) {
 	const nombre = inputs[0].value.trim();
 	const codigo = inputs[1].value.trim();
 	const descripcion = inputs[2].value.trim();
+	const prioridad = inputs[3].value.trim();
 
 	e.preventDefault();
-	if (nombre == "" || codigo == "" || descripcion == "") {
+	if (nombre == "" || codigo == "" || descripcion == "" || prioridad == "") {
 		alert("Llenar todos los campos");
 	} else {
-		const tarea = { id, nombre, codigo, descripcion };
+		const tarea = { id, nombre, codigo, descripcion , prioridad};
 		id++;
 		listaTareas.push(tarea);
 	}
@@ -35,12 +36,13 @@ function updateList() {
 	const containerCard = document.querySelector(".container-card");
 	containerCard.innerHTML = "";
 	listaTareas.forEach((tarea) => {
-		const { id, nombre, codigo, descripcion } = tarea;
+		const { id, nombre, codigo, descripcion,prioridad } = tarea;
 		containerCard.innerHTML += `<div class="card">
 					<p class="id hidden" value=${id}></p>
 					<p class="card-content nombre">${nombre}</p>
 					<p class="card-content codigo">${codigo}</p>
 					<p class="card-content descripcion">${descripcion}</p>
+					<p class="card-content prioridad"> La prioridad es ${prioridad}</p>
 					<p class='bx bx-edit-alt bx-tada-hover' onclick='editTask(event)'></p>
 					<p class='bx bxs-trash bx-tada-hover' onclick='deleteTask(event)'></p>
 					</div>`;
@@ -69,10 +71,12 @@ function editTask(e) {
 	const codigo = e.target.parentElement.querySelector(".codigo").innerHTML;
 	const descripcion =
 		e.target.parentElement.querySelector(".descripcion").innerHTML;
+	const prioridad = e.target.parentElement.querySelector(".prioridad").innerHTML
 	const inputs = document.querySelectorAll(".input-form");
 	inputs[0].value = nombre;
 	inputs[1].value = codigo;
 	inputs[2].value = descripcion;
+	inputs[3].value = prioridad;
 	changeButton("editTask", "Editar", `updateTask(event, ${id})`);
 }
 
@@ -82,13 +86,14 @@ function updateTask(e, id) {
 	const nombre = inputs[0].value.trim();
 	const codigo = inputs[1].value.trim();
 	const descripcion = inputs[2].value.trim();
+	const prioridad = inputs[3].value.trim();
 
 	e.preventDefault();
-	if (nombre == "" || codigo == "" || descripcion == "") {
+	if (nombre == "" || codigo == "" || descripcion == "" || prioridad == "") {
 		alert("Llenar todos los campos");
 	} else {
 		let index = listaTareas.findIndex((tarea) => tarea.id == id);
-		listaTareas[index] = {id, nombre, codigo, descripcion};
+		listaTareas[index] = {id, nombre, codigo, descripcion, prioridad};
 	}
 	updateList();
 	cleanInputs();

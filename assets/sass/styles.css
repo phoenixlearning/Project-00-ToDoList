@@ -8,6 +8,10 @@
   font-family: roboto;
 }
 
+body{
+  background-color:#C50CB4 ;
+}
+
 .container-form {
   max-width: 40rem;
   margin: auto;

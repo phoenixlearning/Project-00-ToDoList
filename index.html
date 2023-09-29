@@ -37,9 +37,24 @@
 							type="text"
 							id="descripcion"
 							class="input-form"
-							required></input>
+							required />
 						<label for="descripcion">Descripción</label>
 					</div>
+					<div class="input-box">
+						<select
+							type="text"
+							class="input-form"
+							id="prioridad"
+							required >
+							<option value=""></option>
+							<option value="baja">Baja</option>
+							<option value="media">Media</option>
+							<option value="alta">Alta</option>
+            			</select>            
+						<label for="prioridad">Prioridad</label>
+					</div>
+
+
 					<button class="buttonTask" id="addTask" onclick="agregarTask(event)">
 						Agregar
 					</button>
